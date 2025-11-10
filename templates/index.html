@@ -3,58 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌤️ Weather App</title>
+    <title>🌤️ ML Weather Predictor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
             height: 100vh;
-            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container {
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            width: 320px;
             text-align: center;
-            width: 350px;
         }
-        input[type="text"] {
-            padding: 10px;
+        input {
             width: 80%;
+            padding: 8px;
+            margin: 8px;
             border-radius: 5px;
             border: 1px solid #aaa;
         }
         button {
+            background: #007bff;
+            color: white;
             padding: 10px 15px;
             border: none;
-            background-color: #0078ff;
-            color: white;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #005fcc;
+            background: #005fcc;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🌤️ Weather App</h1>
+        <h2>🌤️ Weather Predictor (ML)</h2>
         <form method="POST">
-            <input type="text" name="city" placeholder="Enter a city name" required>
-            <button type="submit">Get Weather</button>
+            <input type="number" name="humidity" placeholder="Humidity (%)" step="any" required><br>
+            <input type="number" name="wind_speed" placeholder="Wind Speed (m/s)" step="any" required><br>
+            <button type="submit">Predict Temperature</button>
         </form>
 
-        {% if weather %}
-        <h2>Weather in {{ weather.city }}</h2>
-        <p><strong>Temperature:</strong> {{ weather.temperature }} °C</p>
-        <p><strong>Description:</strong> {{ weather.description.title() }}</p>
-        <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
-        <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
+        {% if prediction %}
+        <h3>Predicted Temperature: {{ prediction | round(2) }} °C</h3>
         {% endif %}
     </div>
 </body>
