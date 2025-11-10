@@ -18,8 +18,4 @@ def index():
             prediction = model.predict([[humidity, wind_speed]])[0]
         except Exception as e:
             prediction = f"Error: {e}"
-
     return render_template('index.html', prediction=prediction)
-
-if __name__ == '__main__':
-    app.run()
