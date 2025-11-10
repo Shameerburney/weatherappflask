@@ -1,19 +1,21 @@
-import pandas as pd
 from sklearn.linear_model import LinearRegression
 import pickle
 
-# 🧠 Example dataset (humidity, wind_speed, temperature)
-data = {
-    'humidity': [30, 45, 60, 75, 85, 90, 50, 40, 70, 65],
-    'wind_speed': [2, 3, 5, 4, 1, 2.5, 3.5, 2.2, 4.8, 3.1],
-    'temperature': [35, 32, 28, 26, 25, 24, 30, 33, 27, 29]
-}
+# 🧠 Example dataset: [humidity, wind_speed] -> temperature
+X = [
+    [30, 2],
+    [45, 3],
+    [60, 5],
+    [75, 4],
+    [85, 1],
+    [90, 2.5],
+    [50, 3.5],
+    [40, 2.2],
+    [70, 4.8],
+    [65, 3.1]
+]
 
-df = pd.DataFrame(data)
-
-# 🔍 Features (X) and target (y)
-X = df[['humidity', 'wind_speed']]
-y = df['temperature']
+y = [35, 32, 28, 26, 25, 24, 30, 33, 27, 29]
 
 # 🔧 Train model
 model = LinearRegression()
