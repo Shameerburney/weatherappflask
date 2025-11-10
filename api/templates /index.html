@@ -1,37 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌤️ ML Weather Predictor</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #89f7fe, #66a6ff);
-  display: flex; justify-content: center; align-items: center;
-  height: 100vh;
-}
-.container {
-  background: white; padding: 2rem; border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center; width: 320px;
-}
-input { width: 80%; padding: 8px; margin: 8px; border-radius: 5px; border: 1px solid #aaa; }
-button { background: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
-button:hover { background: #005fcc; }
-</style>
+    <title>Weather ML App</title>
 </head>
 <body>
-<div class="container">
-<h2>🌤️ Weather Predictor (ML)</h2>
-<form method="POST">
-  <input type="number" name="humidity" placeholder="Humidity (%)" step="any" required><br>
-  <input type="number" name="wind_speed" placeholder="Wind Speed (m/s)" step="any" required><br>
-  <button type="submit">Predict Temperature</button>
-</form>
-
-{% if prediction %}
-<h3>Predicted Temperature: {{ prediction | round(2) }} °C</h3>
-{% endif %}
-</div>
+    <h1>Weather Prediction</h1>
+    <form method="POST">
+        Humidity: <input type="text" name="humidity"><br>
+        Wind Speed: <input type="text" name="wind_speed"><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
 </body>
 </html>
